@@ -6,12 +6,15 @@ import { PixelatedEditorComponent } from './pixelated-editor/pixelated-editor.co
 import { SettingsService } from './settings.service';
 
 
+export var TileType: any;
 export var bla: any;
 export var drawing: any;
 export var getOffset: any;
 export var createDrawingData: any;
 export var mobileOffsetCorrection: any;
 export var getCurrentPalette: any;
+export var getPal: any;
+export var getContrastingColor: any;
 
 
 @NgModule({
