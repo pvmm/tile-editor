@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { SettingsService, bitsyLog, tilesize } from '../settings.service';
-import { getDrawingImageSource, getDrawingFrameData } from '../utils';
+import { drawing, getOffset, mobileOffsetCorrection, getCurrentPalette } from '../app.module';
+
+
 
 @Component({
   selector: 'pixelated-editor',
@@ -82,16 +84,7 @@ export class PixelatedEditorComponent implements AfterViewInit {
 	}
 	
 	updateCanvas() {
-		// get palette of selected room
-		var selectedRoomId = state.room;
-		if (roomTool) {
-			selectedRoomId = roomTool.getSelected();
-		}
-		if (room[selectedRoomId] === undefined) {
-			selectedRoomId = "0";
-		}
-
-		var palId = room[selectedRoomId].pal;
+		var palId = getCurrentPalette();
 		var palColors = getPal(palId);
 		var canvas = this.canvas.nativeElement;
 		var ctx = this.ctx;
@@ -130,5 +123,7 @@ export class PixelatedEditorComponent implements AfterViewInit {
 		}
 	}
 }
+
+declare var getDrawingFrameData: any;
 
 const paint_scale:number = 32 ;

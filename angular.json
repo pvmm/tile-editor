@@ -32,7 +32,10 @@
             "styles": [
               "src/styles.less"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/settings.js",
+              "src/assets/engine/world.js"
+	    ]
           },
           "configurations": {
             "production": {
@@ -100,5 +103,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
