@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { PixelatedEditorComponent } from './pixelated-editor/pixelated-editor.component';
 import { SettingsService } from './settings.service';
+import { EventManagerService } from './event-manager.service';
 
 
 export var TileType: any;
@@ -25,7 +26,7 @@ export var getContrastingColor: any;
   imports: [
     BrowserModule
   ],
-  providers: [SettingsService],
+  providers: [SettingsService, EventManagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
