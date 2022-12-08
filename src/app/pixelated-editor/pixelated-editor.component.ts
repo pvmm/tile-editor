@@ -10,7 +10,7 @@ const paint_scale:number = 32;
 @Component({
     selector: 'pixelated-editor',
     templateUrl: './pixelated-editor.component.html',
-    styleUrls: ['../../styles.css', './bitsyEditorStyle.css', './dialogToolStyle.css', './pixelated-editor.component.css']
+    styleUrls: ['./bitsyEditorStyle.css', './dialogToolStyle.css', './pixelated-editor.component.css']
 })
 export class PixelatedEditorComponent implements AfterViewInit {
     @ViewChild('paint', {static: false, read: ElementRef}) canvas!: ElementRef<HTMLCanvasElement>;

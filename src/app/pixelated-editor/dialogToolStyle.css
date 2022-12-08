@@ -317,10 +317,11 @@
 	/* TODO : get rid of this whole wrapping thing? */
 }
 
+/*
 @font-face {
 	font-family: bitsy_ascii;
-	src: url(/font/bitsy_ascii_small.ttf);
-}
+	src: url(../../assets/fonts/bitsy_ascii_small.ttf);
+} */
 
 .dialogTextboxContainer {
 	background: var(--bitsy-color-dialog-text-background);
@@ -332,7 +333,7 @@
 .dialogTextboxContent {
 	background: var(--bitsy-color-dialog-text-background);
 	color: var(--bitsy-color-dialog-text-color);
-	font-family: bitsy_ascii, monospace;
+	/* font-family: bitsy_ascii, monospace; */
 	width: 32ch;
 	min-height: 2ch;
 	word-wrap: break-word;

@@ -18,3 +18,10 @@
     --bitsy-size-m: 24rem;
     --bitsy-size-l: 32rem;
 }
+
+/* font */
+@font-face {
+        font-family: "monocraft, medium", monospace;
+        src: url(./assets/fonts/monocraft.otf);
+
+}
