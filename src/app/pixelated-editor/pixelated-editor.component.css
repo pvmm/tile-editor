@@ -1,0 +1,12 @@
+/* icons */
+.icon {
+        width: 1em;
+        height: 1em;
+        /* filter processed in https://codepen.io/sosuke/pen/Pjoqqp for color --bitsy-color-main-2 */
+        filter: invert(45%) sepia(9%) saturate(2919%) hue-rotate(202deg) brightness(88%) contrast(83%);
+}
+
+/* specific icons */
+.icon-paint {
+        background-image: url(../../assets/icons/paint.svg);
+}

@@ -199,13 +199,6 @@ input[type=checkbox]:disabled + label {
 	opacity: 0.5;
 }
 
-/* icons */
-.bitsy_icon svg {
-	width: 1em;
-	height: 1em;
-	fill: currentColor;
-}
-
 .icon_anim_frame0 {
 	display: none;
 }
