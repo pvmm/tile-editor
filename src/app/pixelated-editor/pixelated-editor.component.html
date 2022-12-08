@@ -7,11 +7,11 @@
         </span>
 
         <button title="show about page for paint" onclick="showAbout('./tools/paint', 'paintPanel');">
-            <span class="bitsy_icon">help</span>
+            <span class="icon icon-help"></span>
         </button>
 
         <button title="minimize paint window" class="bitsy-card-close-button" onclick="hidePanel('paintPanel');">
-            <span class="bitsy_icon">close</span>
+            <span class="icon icon-close"></span>
         </button>
     </div>
 
@@ -19,25 +19,25 @@
         <form id="paintModeRadio" class="bitsy-menu-group">
             <input type="radio" name="paint mode" value="avatar" onclick="on_paint_avatar();" id="paintOptionAvatar" checked>
             <label title="edit the avatar: the player's character" for="paintOptionAvatar" class="left">
-                <span class="bitsy_icon icon_space_right">avatar</span>
+	        <span class="icon icon-avatar"></span>
                 <span class="localize avatar_label">avatar</span>
             </label>
 
             <input type="radio" name="paint mode" value="tile" onclick="on_paint_tile();" id="paintOptionTile">
             <label title="edit tiles: pieces of scenery" for="paintOptionTile" class="middle">
-                <span class="bitsy_icon icon_space_right">tile</span>
+	        <span class="icon icon-tile"></span>
                 <span class="localize tile_label">tile</span>
             </label>
 
             <input type="radio" name="paint mode" value="sprite" onclick="on_paint_sprite();" id="paintOptionSprite">
             <label title="edit sprites: non-player characters and interactive objects" for="paintOptionSprite" class="middle">
-                <span class="bitsy_icon icon_space_right">sprite</span>
+	        <span class="icon icon-sprite"></span>
                 <span class="localize sprite_label">sprite</span>
             </label>
 
             <input type="radio" name="paint mode" value="item" onclick="on_paint_item();" id="paintOptionItem">
             <label title="edit items: things the player can pick up" for="paintOptionItem" class="right">
-                <span class="bitsy_icon icon_space_right">item</span>
+	        <span class="icon icon-item"></span>
                 <span class="localize item_label">item</span>
             </label>
 
@@ -49,29 +49,29 @@
 
             <!-- prev / next -->
             <button title="previous drawing" class="color0 disableForAvatar" onclick="prev();">
-                <span class="bitsy_icon">previous</span>
+                <span class="icon icon-previous"></span>
             </button>
 
             <button title="next drawing" class="color0 disableForAvatar" onclick="next();">
-                <span class="bitsy_icon">next</span>
+                <span class="icon icon-next"></span>
             </button>
 
             <!-- add / copy / delete -->
             <button title="add drawing" class="color0 disableForAvatar" onclick="newDrawing();">
-                <span class="bitsy_icon">add</span>
+                <span class="icon icon-add"></span>
             </button>
 
             <button title="duplicate drawing" class="color0 disableForAvatar" onclick="duplicateDrawing();">
-                <span class="bitsy_icon">copy</span>
+                <span class="icon icon-copy"></span>
             </button>
 
             <button title="delete drawing" class="color0 disableForAvatar" onclick="deleteDrawing();">
-                <span class="bitsy_icon">delete</span>
+                <span class="icon icon-delete"></span>
             </button>
 
             <!-- find -->
             <button title="open find tool: drawings" onclick="openFindToolWithCurrentPaintCategory();">
-                <span class="bitsy_icon">search</span>
+                <span class="icon icon-search"></span>
             </button>
         </div>
 
@@ -81,11 +81,11 @@
             <div class="buttonGroup">
                 <input type="checkbox" id="paintGridCheck" onclick="togglePaintGrid(event);" autocomplete="off" checked/>
                 <label title="show / hide grid" for="paintGridCheck" class="bitsy-menu-label">
-                    <span id="paintGridIcon" class="bitsy_icon">visibility</span>
+                    <span class="icon icon-visibility"></span>
                     <span class="localize grid_toggle_visible">grid</span>
                 </label>
                 <button id="showInventoryButton" title="show inventory" class="bitsy-menu-label" onclick="showPanel('inventoryPanel', 'paintPanel');">
-                    <span class="bitsy_icon">item</span>
+                    <span class="icon icon-inventory"></span>
                     <span class="localize inventory_tool_name">inventory</span>
                 </button>
             </div>
@@ -107,7 +107,7 @@
                 <input type="checkbox" id="animatedCheckbox" onchange="on_toggle_animated();" autocomplete="off" >
                 <label title="add animation to drawing" for="animatedCheckbox">
                     <span class="localize animation_title">animation</span>
-                    <span id="animatedCheckboxIcon" class="bitsy_icon" style="margin-left: var(--bitsy-space-s);">expand_less</span>
+                    <span id="animatedCheckboxIcon" class="icon icon-expand-less" style="margin-left: var(--bitsy-space-s);"></span>
                 </label>
             </div>
             <div id="animation" style="display:none;">

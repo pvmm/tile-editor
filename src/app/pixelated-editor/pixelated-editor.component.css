@@ -10,3 +10,51 @@
 .icon-paint {
         background-image: url(../../assets/icons/paint.svg);
 }
+.icon-help {
+        background-image: url(../../assets/icons/help.svg);
+}
+.icon-close {
+        background-image: url(../../assets/icons/close.svg);
+}
+.icon-avatar {
+        background-image: url(../../assets/icons/avatar.svg);
+}
+.icon-tile {
+        background-image: url(../../assets/icons/tile.svg);
+}
+.icon-sprite {
+        background-image: url(../../assets/icons/sprite.svg);
+}
+.icon-item {
+        background-image: url(../../assets/icons/item.svg);
+}
+.icon-previous {
+        background-image: url(../../assets/icons/previous.svg);
+}
+.icon-next {
+        background-image: url(../../assets/icons/next.svg);
+}
+.icon-add {
+        background-image: url(../../assets/icons/add.svg);
+}
+.icon-copy {
+        background-image: url(../../assets/icons/copy.svg);
+}
+.icon-delete {
+        background-image: url(../../assets/icons/delete.svg);
+}
+.icon-search {
+        background-image: url(../../assets/icons/search.svg);
+}
+.icon-visibility-on {
+        background-image: url(../../assets/icons/visibility-on.svg);
+}
+.icon-visibility-off {
+        background-image: url(../../assets/icons/visibility-off.svg);
+}
+.icon-expand-more {
+        background-image: url(../../assets/icons/expand-more.svg);
+}
+.icon-expand-less {
+        background-image: url(../../assets/icons/expand-less.svg);
+}
