@@ -3,7 +3,7 @@
         <span class="icon icon-paint"></span>
 
         <span class="bitsy-card-title" title="paint window" onmousedown="grabCard(event);">
-            <span class="localize paint_tool_name">pixel editor</span>
+            <span class="paint_tool_name">pixel editor</span>
         </span>
 
         <button title="show about page for paint" onclick="showAbout('./tools/paint', 'paintPanel');">
@@ -20,25 +20,25 @@
             <input type="radio" name="paint mode" value="avatar" onclick="on_paint_avatar();" id="paintOptionAvatar" checked>
             <label title="edit the avatar: the player's character" for="paintOptionAvatar" class="left">
 	        <span class="icon icon-avatar"></span>
-                <span class="localize avatar_label">avatar</span>
+                <span class="avatar_label">avatar</span>
             </label>
 
             <input type="radio" name="paint mode" value="tile" onclick="on_paint_tile();" id="paintOptionTile">
             <label title="edit tiles: pieces of scenery" for="paintOptionTile" class="middle">
 	        <span class="icon icon-tile"></span>
-                <span class="localize tile_label">tile</span>
+                <span class="tile_label">tile</span>
             </label>
 
             <input type="radio" name="paint mode" value="sprite" onclick="on_paint_sprite();" id="paintOptionSprite">
             <label title="edit sprites: non-player characters and interactive objects" for="paintOptionSprite" class="middle">
 	        <span class="icon icon-sprite"></span>
-                <span class="localize sprite_label">sprite</span>
+                <span class="sprite_label">sprite</span>
             </label>
 
             <input type="radio" name="paint mode" value="item" onclick="on_paint_item();" id="paintOptionItem">
             <label title="edit items: things the player can pick up" for="paintOptionItem" class="right">
 	        <span class="icon icon-item"></span>
-                <span class="localize item_label">item</span>
+                <span class="item_label">item</span>
             </label>
 
         </form>
@@ -82,11 +82,11 @@
                 <input type="checkbox" id="paintGridCheck" onclick="togglePaintGrid(event);" autocomplete="off" checked/>
                 <label title="show / hide grid" for="paintGridCheck" class="bitsy-menu-label">
                     <span class="icon icon-visibility"></span>
-                    <span class="localize grid_toggle_visible">grid</span>
+                    <span class="grid_toggle_visible">grid</span>
                 </label>
                 <button id="showInventoryButton" title="show inventory" class="bitsy-menu-label" onclick="showPanel('inventoryPanel', 'paintPanel');">
                     <span class="icon icon-inventory"></span>
-                    <span class="localize inventory_tool_name">inventory</span>
+                    <span class="inventory_tool_name">inventory</span>
                 </button>
             </div>
         </div>
@@ -95,7 +95,7 @@
             <input type="checkbox" id="wallCheckbox" onchange="on_toggle_wall(event);" autocomplete="off" >
             <label title="make tile an impassible wall" for="wallCheckbox" class="bitsy-menu-label">
                 <span id="wallCheckboxIcon" class="bitsy_icon">wall_off</span>
-                <span class="localize wall_toggle">wall</span>
+                <span class="wall_toggle">wall</span>
             </label>
         </div>
 
@@ -106,7 +106,7 @@
             <div id="isAnimated">
                 <input type="checkbox" id="animatedCheckbox" onchange="on_toggle_animated();" autocomplete="off" >
                 <label title="add animation to drawing" for="animatedCheckbox">
-                    <span class="localize animation_title">animation</span>
+                    <span class="animation_title">animation</span>
                     <span id="animatedCheckboxIcon" class="icon icon-expand-less" style="margin-left: var(--bitsy-space-s);"></span>
                 </label>
             </div>
@@ -117,7 +117,7 @@
                             <img id="animationThumbnailPreview" />
                         </div>
                         <label class="bitsy-menu-label">
-                            <span class="localize animation_preview">preview</span>
+                            <span class="animation_preview">preview</span>
                         </label>
                     </div>
                     <div id="animationKeyframe1" class="bitsy-thumbnail" onclick="on_paint_frame1();">
@@ -125,7 +125,7 @@
                             <img id="animationThumbnailFrame1" />
                         </div>
                         <label class="bitsy-menu-label">
-                            <span class="localize animation_frame1">frame 1</span>
+                            <span class="animation_frame1">frame 1</span>
                         </label>
                     </div>
                     <div id="animationKeyframe2" class="bitsy-thumbnail" onclick="on_paint_frame2();">
@@ -133,7 +133,7 @@
                             <img id="animationThumbnailFrame2" />
                         </div>
                         <label class="bitsy-menu-label">
-                            <span class="localize animation_frame2">frame 2</span>
+                            <span class="animation_frame2">frame 2</span>
                         </label>
                     </div>
                 </div>
