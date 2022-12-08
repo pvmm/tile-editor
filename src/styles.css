@@ -25,3 +25,5 @@
         src: url(./assets/fonts/monocraft.otf);
 
 }
+
+body { background-color: var(--bitsy-color-accent-2); }
