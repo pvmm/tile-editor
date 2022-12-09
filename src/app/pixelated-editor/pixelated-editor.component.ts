@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { SettingsService, bitsyLog, tilesize } from '../settings.service';
 import { EventManagerService } from '../event-manager.service';
-import { TileRendererService } from '../tile-renderer.service';
-import { drawing, getOffset, mobileOffsetCorrection, getCurrentPalette, getPal, TileType, DrawingType,
-	 getContrastingColor, getDrawingFrameData } from '../app.module';
+import { TileRendererService, Tile, makeTile } from '../tile-renderer.service';
+import { TileType, drawing, getOffset, mobileOffsetCorrection, getPal,
+	 getContrastingColor } from '../app.module';
 
 
 const paint_scale:number = 32;
@@ -29,7 +29,7 @@ export class PixelatedEditorComponent implements AfterViewInit {
     private onReloadItem?: Function = undefined;
 
     // Component data
-    private drawing: DrawingType = new DrawingType(TileType.Avatar);
+    //private drawing = makeTile();
 
   
     constructor(private settings: SettingsService,
@@ -98,17 +98,17 @@ export class PixelatedEditorComponent implements AfterViewInit {
 
 
     // todo: assumes 2 frames
-    curDrawingAltFrameData() {
+    curDrawingAltFrameData(): Tile {
         console.log("curDrawingAllFrameData() called");
         var frameIndex = (this.curDrawingFrameIndex === 0 ? 1 : 0);
-        return getDrawingFrameData(drawing, frameIndex);
+        return this.renderer.getDrawingFrameData(drawing, frameIndex);
     }
 
 
     curDrawingData() {
-        console.log("curDrawingData() called", getDrawingFrameData, getOffset);
+        console.log("curDrawingData() called");
         var frameIndex = (this.isCurDrawingAnimated ? this.curDrawingFrameIndex : 0);
-        return getDrawingFrameData(this.drawing, frameIndex);
+        return this.renderer.getDrawingFrameData(drawing, frameIndex);
     }
 
 
@@ -144,10 +144,10 @@ export class PixelatedEditorComponent implements AfterViewInit {
         console.log("updateCanvas() done.");
 
         //pixel color
-        if (this.drawing.type === TileType.Tile) {
+        if (drawing.type === TileType.Tile) {
             ctx.fillStyle = "rgb(" + palColors[1][0] + "," + palColors[1][1] + "," + palColors[1][2] + ")";
         }
-        else if (this.drawing.type === TileType.Sprite || this.drawing.type === TileType.Avatar || this.drawing.type === TileType.Item) {
+        else if (drawing.type === TileType.Sprite || drawing.type === TileType.Avatar || drawing.type === TileType.Item) {
             ctx.fillStyle = "rgb(" + palColors[2][0] + "," + palColors[2][1] + "," + palColors[2][2] + ")";
         }
 
@@ -176,17 +176,17 @@ export class PixelatedEditorComponent implements AfterViewInit {
 
     reloadDrawing() {
         console.log("reloadDrawing() called");
-        if (this.drawing.type === TileType.Tile) {
+        if (drawing.type === TileType.Tile) {
             if (this.onReloadTile) {
                 this.onReloadTile();
             }
         }
-        else if (this.drawing.type === TileType.Avatar || this.drawing.type === TileType.Sprite) {
+        else if (drawing.type === TileType.Avatar || drawing.type === TileType.Sprite) {
             if (this.onReloadSprite) {
                 this.onReloadSprite(); 
             }
         }
-        else if (this.drawing.type === TileType.Item) {
+        else if (drawing.type === TileType.Item) {
             if (this.onReloadItem) {
                 this.onReloadItem();
             }

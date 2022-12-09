@@ -2,10 +2,6 @@ function mobileOffsetCorrection() {
 }
 
 
-export function bla() {
-}
-
-
 function getOffset(x) {
 }
 

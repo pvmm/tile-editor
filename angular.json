@@ -34,8 +34,7 @@
             ],
             "scripts": [
               "src/assets/settings.js",
-              "src/assets/engine/world.js",
-              "src/assets/engine/renderer.js"
+              "src/assets/engine/world.js"
 	    ]
           },
           "configurations": {
