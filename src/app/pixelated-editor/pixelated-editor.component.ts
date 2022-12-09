@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { SettingsService, bitsyLog, tilesize } from '../settings.service';
 import { EventManagerService } from '../event-manager.service';
+import { TileRendererService } from '../tile-renderer.service';
 import { drawing, getOffset, mobileOffsetCorrection, getCurrentPalette, getPal, TileType, DrawingType,
-	 getContrastingColor } from '../app.module';
+	 getContrastingColor, getDrawingFrameData } from '../app.module';
 
 
 const paint_scale:number = 32;
@@ -31,7 +32,10 @@ export class PixelatedEditorComponent implements AfterViewInit {
     private drawing: DrawingType = new DrawingType(TileType.Avatar);
 
   
-    constructor(private settings: SettingsService, private events: EventManagerService) { 
+    constructor(private settings: SettingsService,
+		private events: EventManagerService,
+		private renderer: TileRendererService) { 
+
         console.log("tilesize = ", tilesize);
         this.drawPaintGrid = (settings.getPanelSetting("paintPanel", "grid") != false);
         //this.updatePaintGridCheck(this.drawPaintGrid);
@@ -51,7 +55,7 @@ export class PixelatedEditorComponent implements AfterViewInit {
 
     afterViewInit() {
         console.log("afterViewInit() called.");
-        let canvas: HTMLCanvasElement = this.canvas.nativeElement;
+        let canvas: HTMLCanvasElement = this.canvas!.nativeElement!;
 
         this.ctx = canvas.getContext("2d");
         if (this.ctx == null) {
@@ -93,15 +97,79 @@ export class PixelatedEditorComponent implements AfterViewInit {
     }
 
 
+    // todo: assumes 2 frames
+    curDrawingAltFrameData() {
+        console.log("curDrawingAllFrameData() called");
+        var frameIndex = (this.curDrawingFrameIndex === 0 ? 1 : 0);
+        return getDrawingFrameData(drawing, frameIndex);
+    }
+
+
+    curDrawingData() {
+        console.log("curDrawingData() called", getDrawingFrameData, getOffset);
+        var frameIndex = (this.isCurDrawingAnimated ? this.curDrawingFrameIndex : 0);
+        return getDrawingFrameData(this.drawing, frameIndex);
+    }
+
+
+    drawGrid(gridDivisions: number, lineColor: any) {
+        var ctx = this.canvas!.nativeElement!.getContext("2d")!;
+	var canvas = this.canvas!.nativeElement;
+        ctx!.fillStyle = lineColor;
+
+        var gridSize = canvas.width; // assumes width === height
+        var gridSpacing = (gridSize / gridDivisions);
+
+        // vertical lines
+        for (var x = 1; x < gridDivisions; x++) {
+            ctx.fillRect(x * gridSpacing, 0 * gridSpacing, 1, gridSize);
+        }
+
+        // horizontal lines
+        for (var y = 1; y < gridDivisions; y++) {
+            ctx.fillRect(0 * gridSpacing, y * gridSpacing, gridSize, 1);
+        }
+    }
+
+
     updateCanvas() {
-        let ctx = this.ctx;
-        let canvas = this.canvas.nativeElement;
-        let palColors = [[0, 82, 204]];
+        let ctx = this.ctx!;
+        let canvas = this.canvas!.nativeElement!;
+        let palColors = [[0, 82, 204], [128, 159, 255], [255, 255, 255]];
 
         //background
-        ctx!!.fillStyle = "rgb(" + palColors[0][0] + "," + palColors[0][1] + "," + palColors[0][2] + ")";
-        ctx!!.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "rgb(" + palColors[0][0] + "," + palColors[0][1] + "," + palColors[0][2] + ")";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
         console.log("updateCanvas() done.");
+
+        //pixel color
+        if (this.drawing.type === TileType.Tile) {
+            ctx.fillStyle = "rgb(" + palColors[1][0] + "," + palColors[1][1] + "," + palColors[1][2] + ")";
+        }
+        else if (this.drawing.type === TileType.Sprite || this.drawing.type === TileType.Avatar || this.drawing.type === TileType.Item) {
+            ctx.fillStyle = "rgb(" + palColors[2][0] + "," + palColors[2][1] + "," + palColors[2][2] + ")";
+        }
+
+        //draw pixels
+        for (var x = 0; x < tilesize; x++) {
+            for (var y = 0; y < tilesize; y++) {
+                // draw alternate frame
+                if (this.isCurDrawingAnimated && this.curDrawingAltFrameData()[y][x] === 1) {
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillRect(x*paint_scale,y*paint_scale,1*paint_scale,1*paint_scale);
+                    ctx.globalAlpha = 1;
+                }
+                // draw current frame
+                if (this.curDrawingData()[y][x] === 1) {
+                    ctx.fillRect(x*paint_scale,y*paint_scale,1*paint_scale,1*paint_scale);
+                }
+            } 
+        }
+
+        // draw grid
+        if (this.drawPaintGrid) {
+            this.drawGrid(tilesize, getContrastingColor());
+        }
     }
 
 
@@ -122,13 +190,12 @@ export class PixelatedEditorComponent implements AfterViewInit {
                 this.onReloadItem();
             }
         }
-	else {
+        else {
             console.error("Don't know what to reload!");
-	}
+        }
 
         // hack to force update of new menu
         //self.menu.update();
     }
 }
 
-declare var getDrawingFrameData: any;

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PixelatedEditorComponent } from './pixelated-editor/pixelated-editor.component';
-// import { bla } from './app.module';
+import { bla } from './app.module';
 
 
 
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         console.log("onInit()");
+        bla();
     }
 
 
@@ -25,9 +26,9 @@ export class AppComponent implements OnInit {
             console.log("callPaint() called.");
             if (this.editor == undefined) {
                 throw Error("Pixelated Editor is undefined");
-	    }
+            }
             this.editor.update();
-	} catch (e) {
+        } catch (e) {
             console.error(e);
         }
     }

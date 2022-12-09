@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class EventManagerService {
-    callbacks = new Map<string, (event: any) => void>();
+    private callbacks = new Map<string, (event: any) => void>();
 
     constructor() { }
 
