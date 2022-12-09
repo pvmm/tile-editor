@@ -1,6 +1,12 @@
-# SampleApp
+# Tile Editor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+![Screenshot](./docs/screenshot.png)
+
+Widget inspired by [bitsy](https://make.bitsy.org/), but redone completely in Angular.
+
+(This project is at the very beginning and it currently does nothing.)
+
+* This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
 
 ## Development server
 
