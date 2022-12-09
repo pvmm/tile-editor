@@ -15,13 +15,13 @@ const paint_scale:number = 32;
     styleUrls: ['./bitsyEditorStyle.css', './dialogToolStyle.css', './pixelated-editor.component.css']
 })
 export class PixelatedEditorComponent implements AfterViewInit {
-    @ViewChild('paint', {static: false, read: ElementRef}) canvas!: ElementRef<HTMLCanvasElement>;
+    @ViewChild('paint', {static: false, read: ElementRef}) canvas: ElementRef<HTMLCanvasElement>;
     private curPaintBrush:number = 0;
     private isPainting:boolean = false;
     private isCurDrawingAnimated:boolean = false;
     private curDrawingFrameIndex:number = 0;
     private drawPaintGrid:boolean = false;
-    private ctx!: CanvasRenderingContext2D | null;
+    private ctx: CanvasRenderingContext2D | null;
 
     // methods for updating the UI
     private onReloadTile?: Function= undefined;
@@ -115,7 +115,7 @@ export class PixelatedEditorComponent implements AfterViewInit {
     drawGrid(gridDivisions: number, lineColor: any) {
         var ctx = this.canvas!.nativeElement!.getContext("2d")!;
 	var canvas = this.canvas!.nativeElement;
-        ctx!.fillStyle = lineColor;
+        ctx.fillStyle = lineColor;
 
         var gridSize = canvas.width; // assumes width === height
         var gridSpacing = (gridSize / gridDivisions);
@@ -135,6 +135,7 @@ export class PixelatedEditorComponent implements AfterViewInit {
     updateCanvas() {
         let ctx = this.ctx!;
         let canvas = this.canvas!.nativeElement!;
+	// TODO: move to settings
         let palColors = [[0, 82, 204], [128, 159, 255], [255, 255, 255]];
 
         //background

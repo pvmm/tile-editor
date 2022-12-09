@@ -3,17 +3,18 @@ import { Injectable } from '@angular/core';
 
 
 export class Drawing {
-    drw: number = 0;
+    drw: string;
 
-    construct(drawingId: number) {
+    construct(drawingId: string) {
         this.drw = drawingId;
     }
 }
 
 
 export class Cache {
-    source = new Array<Array<Drawing>>();
-    render = new Array<Array<Drawing>>();
+    // each cache has 3 frames for each tile type.
+    source = new Map<string, Array<Drawing>>();
+    render = new Map<string, Array<Drawing>>();
 }
 
 
@@ -26,8 +27,8 @@ export class TileRendererService {
     constructor() { }
 
 
-    getDrawingSource(drawingId: number) {
-        return this.drawingCache.source[drawingId];
+    getDrawingSource(drawingId: string) {
+        return this.drawingCache.source.get(drawingId);
     }
 
 
