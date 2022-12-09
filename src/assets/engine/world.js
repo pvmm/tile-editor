@@ -1,14 +1,26 @@
 function mobileOffsetCorrection() {
 }
 
-function bla() {
+
+export function bla() {
 }
+
 
 function getOffset(x) {
 }
 
+
 function createDrawingData(type, id) {
 }
 
-function getDrawingFrameData() {
+
+// todo : rename function
+function getDrawingImageSource(drawing) {
+    return renderer.GetDrawingSource(drawing.drw);
+}
+
+
+function getDrawingFrameData(drawing, frameIndex) {
+    var imageSource = getDrawingImageSource(drawing);
+    return imageSource[frameIndex];
 }

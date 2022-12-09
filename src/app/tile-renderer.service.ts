@@ -12,8 +12,8 @@ export class Drawing {
 
 
 export class Cache {
-    source = new Map<number, Map<number, object>>();
-    render = new Map<number, Map<number, object>>();
+    source = new Array<Array<Drawing>>();
+    render = new Array<Array<Drawing>>();
 }
 
 
@@ -27,7 +27,7 @@ export class TileRendererService {
 
 
     getDrawingSource(drawingId: number) {
-        return this.drawingCache.source.get(drawingId);
+        return this.drawingCache.source[drawingId];
     }
 
 
@@ -35,7 +35,7 @@ export class TileRendererService {
         var imageSource = this.getDrawingSource(drawing.drw);          
 
         if (imageSource != null) {
-            return imageSource.get(frameIndex);
+            return imageSource[frameIndex];
         }
 
         return undefined;

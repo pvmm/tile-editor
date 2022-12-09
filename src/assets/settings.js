@@ -1,3 +1,7 @@
+import { TileRenderer } from './engine/renderer.js';
+import { getDrawingFrameData } from './utils.js';
+
+
 const TileType = {
         Tile : "TIL",
         Sprite : "SPR",
@@ -36,3 +40,5 @@ function getContrastingColor(palId) {
   }
 }
 
+
+var renderer = new TileRenderer();
